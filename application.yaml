@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rails-app
+  namespace: default
+spec:
+  destination:
+    name: minikube
+    namespace: rails-app
+  project: default
+  source:
+    repoURL: https://github.com/hussainashraf/rails-app-gitops
+    path: manifests
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+
+
